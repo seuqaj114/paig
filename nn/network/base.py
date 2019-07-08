@@ -97,8 +97,6 @@ class BaseNet:
                 restore = False
 
         if restore:
-            #self.sess.run(tf.global_variables_initializer())
-            #loader = tf.train.Saver({v.name[:-2]:v for v in tf.trainable_variables() if "encoder" in v.name or "decoder" in v.name})
             self.saver.restore(self.sess, os.path.join(restore_dir, "model.ckpt"))
             self.sess.run(self.lr.assign(self.base_lr))
         else:
