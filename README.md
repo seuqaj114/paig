@@ -7,7 +7,7 @@ This repo contains the code for the paper Physics-as-Inverse-Graphics: Joint Uns
 To train run:
 
 ```
-PYTHONPATH=. python runners/run_pendulum.py --task=spring_color --model=PhysicsNet --epochs=500 
+PYTHONPATH=. python runners/run_physics.py --task=spring_color --model=PhysicsNet --epochs=500 
 --batch_size=100 --save_dir=<experiment_folder> --autoencoder_loss=3.0 --base_lr=3e-4 --anneal_lr=true
 --color=true --eval_every_n_epochs=10 --print_interval=100 --debug=false --use_ckpt=false 
 ```
@@ -16,7 +16,7 @@ This will automatically run on the test set (evaluation with extrapolation range
 To run only evaluation on a previously trained model use the extra flags `--test_mode` and `--use_ckpt`:
 
 ```
-PYTHONPATH=. python runners/run_pendulum.py --task=spring_color --model=PhysicsNet --epochs=500 
+PYTHONPATH=. python runners/run_physics.py --task=spring_color --model=PhysicsNet --epochs=500 
 --batch_size=100 --save_dir=<experiment_folder> --autoencoder_loss=3.0 --base_lr=3e-4 
 --color=true --eval_every_n_epochs=10 --print_interval=100 --debug=false 
 --use_ckpt=true --test_mode=true 
@@ -25,7 +25,7 @@ PYTHONPATH=. python runners/run_pendulum.py --task=spring_color --model=PhysicsN
 This will use the checkpoint found in `<experiment_folder>`. To evaluate a checkpoint from a different folder use `--ckpt_dir`:
 
 ```
-PYTHONPATH=. python runners/run_pendulum.py --task=spring_color --model=PhysicsNet --epochs=500 
+PYTHONPATH=. python runners/run_physics.py --task=spring_color --model=PhysicsNet --epochs=500 
 --batch_size=100 --save_dir=<experiment_folder> --autoencoder_loss=3.0 --base_lr=3e-4 
 --color=true --eval_every_n_epochs=10 --print_interval=100 --debug=false 
 --use_ckpt=true --test_mode=true --ckpt_dir=<folder_with_checkpoint>
