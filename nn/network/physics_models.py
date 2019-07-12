@@ -169,7 +169,7 @@ class PhysicsNet(BaseNet):
 
                 if self.input_shape[0] < 40:
                     h = inp
-                    h = shallow_unet(h, 32, self.n_objs, upsamp=False)
+                    h = shallow_unet(h, 8, self.n_objs, upsamp=True)
 
                     h = tf.concat([h, tf.ones_like(h[:,:,:,:1])], axis=-1)
                     h = tf.nn.softmax(h, axis=-1)
@@ -185,7 +185,7 @@ class PhysicsNet(BaseNet):
                     h = tf.tanh(h)*(self.conv_input_shape[0]/2)+(self.conv_input_shape[0]/2)
                 else:
                     h = inp
-                    h = unet(h, 32, self.n_objs, upsamp=False)
+                    h = unet(h, 16, self.n_objs, upsamp=True)
 
                     h = tf.concat([h, tf.ones_like(h[:,:,:,:1])], axis=-1)
                     h = tf.nn.softmax(h, axis=-1)
@@ -193,7 +193,7 @@ class PhysicsNet(BaseNet):
                     self.masked_objs = [self.enc_masks[:,:,:,i:i+1]*inp for i in range(self.n_objs)]
                     h = tf.concat(self.masked_objs, axis=0)
                     h = tf.layers.average_pooling2d(h, 2, 2)
-                    h = tf.reduce_mean(h, axis=-1)
+                    #h = tf.reduce_mean(h, axis=-1)
 
                     h = tf.layers.flatten(h)
                     h = tf.layers.dense(h, 200, activation=tf.nn.relu)
@@ -223,7 +223,6 @@ class PhysicsNet(BaseNet):
                     h = tf.split(inp, self.n_objs, 2)
                     h = tf.concat(h, axis=0)
                     h = tf.reshape(h, [tf.shape(h)[0], self.input_steps*self.coord_units//self.n_objs//2])
-                    h = tf.layers.dense(h, 100, activation=tf.tanh)
                     h = tf.layers.dense(h, 100, activation=tf.tanh)
                     h = tf.layers.dense(h, 100, activation=tf.tanh)
                     h = tf.layers.dense(h, self.coord_units//self.n_objs//2, activation=None)
@@ -353,9 +352,9 @@ class PhysicsNet(BaseNet):
 
         # Plot a grid with prediction sequences
         for i in range(batch_x.shape[0]):
-            if hasattr(self, 'pos_vel_seq'):
-                if i == 0 or i == 1:
-                    logger.info(pos_vel_seq[i])
+            #if hasattr(self, 'pos_vel_seq'):
+            #    if i == 0 or i == 1:
+            #        logger.info(pos_vel_seq[i])
 
             to_concat = [output_seq[i],batch_x[i],recons_seq[i]]
             total_seq = np.concatenate(to_concat, axis=0) 
