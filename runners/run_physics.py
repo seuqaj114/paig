@@ -68,7 +68,7 @@ if __name__ == "__main__":
         data_iterators = get_iterators(
                               os.path.join(
                                   os.path.dirname(os.path.realpath(__file__)), 
-                                  "../data/datasets/%s"%data_file), conv=FLAGS.conv, datapoints=FLAGS.datapoints)
+                                  "../data/datasets/%s"%data_file), conv=True, datapoints=FLAGS.datapoints)
         network.get_data(data_iterators)
         network.train(FLAGS.epochs, FLAGS.batch_size, FLAGS.save_every_n_epochs, FLAGS.eval_every_n_epochs,
                     FLAGS.print_interval, FLAGS.debug)
@@ -87,7 +87,7 @@ if __name__ == "__main__":
     data_iterators = get_iterators(
                           os.path.join(
                               os.path.dirname(os.path.realpath(__file__)), 
-                              "../data/datasets/%s"%test_data_file), conv=FLAGS.conv, datapoints=FLAGS.datapoints)
+                              "../data/datasets/%s"%test_data_file), conv=True, datapoints=FLAGS.datapoints)
     network.get_data(data_iterators)
     network.train(0, FLAGS.batch_size, FLAGS.save_every_n_epochs, FLAGS.eval_every_n_epochs,
                 FLAGS.print_interval, FLAGS.debug)
