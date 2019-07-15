@@ -42,7 +42,7 @@ Notes on flags, hyperparameters, and general training behavior:
 
 There are currently 5 tasks implemented in this repo: 
 
-* `bouncing`: (here there are no learnable physical parameters)
+* `bouncing_balls`: (here there are no learnable physical parameters)
 * `spring_color`: Two colored balls connected by a spring.
 * `spring_color_half`: Same as above, but in the input and prediction range the balls never leave half of the image. They only move to the other half of the image in the extrapolation range of the test set.
 * `mnist_spring_color`: Two colored MNIST digits connected by a spring, in a CIFAR background.
@@ -57,7 +57,7 @@ There are currently 5 tasks implemented in this repo:
  ## Hyperparameters
  
  For the tasks above, the recommended `base_lr` and `autoencoder_loss` paramters are:
- * `bouncing`: `--base_lr=3e-4 --autoencoder_loss=2.0`
+ * `bouncing_balls`: `--base_lr=3e-4 --autoencoder_loss=2.0`
 * `spring_color`: `--base_lr=6e-4 --autoencoder_loss=3.0`
 * `spring_color_half`: `--base_lr=6e-4 --autoencoder_loss=3.0`
 * `mnist_spring_color`: `--base_lr=6e-4 --autoencoder_loss=3.0`
