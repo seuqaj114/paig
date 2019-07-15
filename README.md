@@ -67,3 +67,8 @@ There are currently 5 tasks implemented in this repo:
  
  When tracking training progress from the `log.txt` file, a value of `eval_recons_loss` below 1.5 indicates that the encoder and decoder have correctly discovered the objects in the scene, and a value of `eval_pred_loss` below 3.0 and 30.0 (for balls and mnist datasets, respectively) indicates that the velocity estimator and the physical parameters have been learned correctly. Due to the dependency on initialization, it is possible that even using the hyperparameters above the model gets stuck in a local minimum and never gets below the aforementioned values, by failing to discover all the objects or learning the correct physical parameters/velocity estimator (this is common in unsupervised object discovery methods). I am working on improving convergence stability.
  
+ ## Reading other results
+ 
+ The `example%d.jpg` files show random rollouts from the validation/test set. The top row corresponds to the model prediction, middle row to the ground-truth, and bottom row to the reconstructed frames (as used by the autoencoder loss - this can be used to evaluate whether the objects have been discovered even though the dynamics might not have been learned yet).
+ 
+ The `templates.jpg` file shows the learned contents (top) and masks (bottom). 
