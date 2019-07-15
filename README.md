@@ -34,7 +34,7 @@ PYTHONPATH=. python runners/run_physics.py --task=spring_color --model=PhysicsNe
 To keep training a model from a checkpoint, simply use the same as above, but with `--test_mode=false`. Note that in this case `base_lr` will be used as the starting learning rate - there is no global learning rate variable saved in the checkpoint - so if you restart training after annealing was applied, be sure to change the `base_lr` accordingly.
 
 Notes on flags, hyperparameters, and general training behavior:
-* Using `--anneal_lr=true` will reduce the base learning rate by a factor of 5 after 75% of the epochs are completed. To change this find the corresponding code in `nn/network/base.py`, in the class method `BaseNet.train()`.
+* Using `--anneal_lr=true` will reduce the base learning rate by a factor of 5 after 70% of the epochs are completed. To change this find the corresponding code in `nn/network/base.py`, in the class method `BaseNet.train()`.
 * When using `autoencoder_loss`, the encoder and decoder parts of the model will train fairly early in training. The rest of training is mostly improving the physical parameters, but this can take a long time. I recommend training between 500 and 1000 epochs (higher for `3bp_color` dataset, lower for `spring` datasets).
 
 
