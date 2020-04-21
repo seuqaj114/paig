@@ -1,6 +1,6 @@
 # Physics-as-Inverse-Graphics
 
-This repo contains the code for the paper Physics-as-Inverse-Graphics: Joint Unsupervised Learning of Objects and Physics from Video (https://arxiv.org/abs/1905.11169).
+This repo contains the code for the paper Physics-as-Inverse-Graphics: Unsupervised Physical Parameter Estimation from Video (https://arxiv.org/abs/1905.11169).
 
 ## Running experiments
 
@@ -72,3 +72,7 @@ There are currently 5 tasks implemented in this repo:
  The `example%d.jpg` files show random rollouts from the validation/test set. The top row corresponds to the model prediction, middle row to the ground-truth, and bottom row to the reconstructed frames (as used by the autoencoder loss - this can be used to evaluate whether the objects have been discovered even though the dynamics might not have been learned yet).
  
  The `templates.jpg` file shows the learned contents (top) and masks (bottom). 
+ 
+ ## Note on reproducibility
+ 
+ This model shows seed dependency when it comes to discovering the objects. For datasets with two objects it works most of the time, whereas for the `3bp_color` dataset it is harder to find a seed that works. It is possible this might be solved by tweaking hyperparameters and network structure, but we have not explored that extensively.
