@@ -1,6 +1,6 @@
 tensorflow==1.12.0
 Pillow==4.2.1
-requests==2.18.4
+requests==2.31.0
 scipy==0.19.1
 six==1.10.0
 matplotlib==2.1.0
